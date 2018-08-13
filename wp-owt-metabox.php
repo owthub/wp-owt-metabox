@@ -1,5 +1,4 @@
 <?php
-
 /*
   Plugin Name: WP OWT Metabox
   Description: This is a simple plugin for purpose of learning about wordpress metaboxes
@@ -61,4 +60,15 @@ function remove_dashboard_widgets() {
 
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
-
+// callback function for metabox at custom post type 'book'
+function wpl_owt_book_function() {
+    wp_nonce_field(basename(__FILE__), "wp_owt_cpt_nonce");
+    ?>
+    <!---p>This is custom owt metabox for custom post type</p>
+    <p><a href="https://github.com/owthub/wp-owt-metabox" target="_blank">Github link</a></p-->
+    <div>
+        <label for="txtPublisherName">Publisher name</label>
+        <input type="text" name="txtPublisherName" placeholder="Publisher name"/>
+    </div>
+    <?php
+}
